@@ -16,7 +16,6 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.CANTalon;
 import com.ctre.phoenix.*;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Solenoid;
