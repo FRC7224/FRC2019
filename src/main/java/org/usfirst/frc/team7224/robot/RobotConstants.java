@@ -62,6 +62,7 @@ public class RobotConstants {
 	public static double kArmPIDP_a = 0.045;
 	public static double kArmPIDI_a = 0.0001;
 	public static double kArmPIDD_a = 0.4;
+	public static int kREMOTE_1_a = 1;
 	
 		
 	// Claw 
