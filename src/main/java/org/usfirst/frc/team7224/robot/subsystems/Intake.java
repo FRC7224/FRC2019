@@ -16,8 +16,8 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 public class Intake extends Subsystem {
 
 
-   private final WPI_VictorSPX intakemotor1 = RobotMap.intakeTalonSRX9;
-   private final WPI_VictorSPX intakemotor2 = RobotMap.intakeTalonSRX10;
+   private final WPI_VictorSPX intakemotor1 = RobotMap.intakeVictorSPX11;
+  
 
 
    public void initDefaultCommand() {
@@ -26,7 +26,6 @@ public class Intake extends Subsystem {
 
    public void setupIntake() {
 	   intakemotor1.set(ControlMode.PercentOutput,0);
-	   intakemotor2.set(ControlMode.PercentOutput,0);
    }
 
    /**
@@ -34,8 +33,7 @@ public class Intake extends Subsystem {
     */
    public void setIntakeMotor(double ispeed) {
 	   intakemotor1.set(ControlMode.PercentOutput,-ispeed);
-	   intakemotor2.set(ControlMode.PercentOutput,ispeed);
-	  }
+		  }
    
 
 

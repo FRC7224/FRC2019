@@ -32,23 +32,23 @@ public class ArmClosedLoop extends Command {
     protected void execute() {
      	    // Manual adjustment
     	    double height = Robot.chassis.deadZone(Robot.oi.joystick1.getRawAxis(4)); // height
-     	    RobotConstants.targetPositionRotations =  RobotConstants.targetPositionRotations +
-     	    		(height * RobotConstants.kArmManualSensitivity); 
+     	    RobotConstants.targetPositionRotations_a =  RobotConstants.targetPositionRotations_a +
+     	    		(height * RobotConstants.kArmManualSensitivity_a); 
      	    
      	    
      	   if (Robot.oi.joystick1.getRawButton(RobotConstants.kArmOverideButton)) {
      		   /// This is bad only use in an emergancy 
-     		     SmartDashboard.putNumber("Override", RobotConstants.targetPositionRotations);
-     		    if (RobotConstants.targetPositionRotations <= RobotConstants.kArmMinHt) 
-     		    	 RobotConstants.kArmMinHt =RobotConstants.targetPositionRotations;  // Redefine bottom
-          	    if (RobotConstants.targetPositionRotations >= RobotConstants.kArmMaxHt )
-          	    	RobotConstants.kArmMaxHt = RobotConstants.targetPositionRotations;  // Redefine top
+     		     SmartDashboard.putNumber("Override", RobotConstants.targetPositionRotations_a);
+     		    if (RobotConstants.targetPositionRotations_a <= RobotConstants.kArmMinHt_a) 
+     		    	 RobotConstants.kArmMinHt_a =RobotConstants.targetPositionRotations_a;  // Redefine bottom
+          	    if (RobotConstants.targetPositionRotations_a >= RobotConstants.kArmMaxHt_a )
+          	    	RobotConstants.kArmMaxHt_a = RobotConstants.targetPositionRotations_a;  // Redefine top
      	   }  else {
      		   // Button not pressed - Normal mode     	
-     	    if (RobotConstants.targetPositionRotations <= RobotConstants.kArmMinHt) 
-     	       RobotConstants.targetPositionRotations = RobotConstants.kArmMinHt;  // Limit to zero height
-     	    if (RobotConstants.targetPositionRotations >= RobotConstants.kArmMaxHt )
-     	       RobotConstants.targetPositionRotations = RobotConstants.kArmMaxHt;  // Limit to max height
+     	    if (RobotConstants.targetPositionRotations_a <= RobotConstants.kArmMinHt_a) 
+     	       RobotConstants.targetPositionRotations_a = RobotConstants.kArmMinHt_a;  // Limit to zero height
+     	    if (RobotConstants.targetPositionRotations_a >= RobotConstants.kArmMaxHt_a )
+     	       RobotConstants.targetPositionRotations_a = RobotConstants.kArmMaxHt_a;  // Limit to max height
      	   }
      	   
      	   
@@ -56,11 +56,11 @@ public class ArmClosedLoop extends Command {
      	   
      	    // Preset Heights
      	    if (Robot.oi.joystick1.getRawButtonPressed(RobotConstants.karm_FieldHTbutton )) {
-     		  RobotConstants.targetPositionRotations = RobotConstants.kArm_FieldHT;
+     		  RobotConstants.targetPositionRotations_a = RobotConstants.kArm_FieldHT_a;
      	    }else if (Robot.oi.joystick1.getRawButtonPressed(RobotConstants.karm_SwitchHTbutton)) {
-     		  RobotConstants.targetPositionRotations = RobotConstants.kArm_SwitchHT;
+     		  RobotConstants.targetPositionRotations_a = RobotConstants.kArm_SwitchHT_a;
      	    }else if (Robot.oi.joystick1.getRawButtonPressed(RobotConstants.karm_ScaleHTbutton)) {
-     		  RobotConstants.targetPositionRotations = RobotConstants.kArm_ScaleHT;
+     		  RobotConstants.targetPositionRotations_a = RobotConstants.kArm_ScaleHT_a;
      	    }
      	    
      	    
@@ -74,7 +74,7 @@ public class ArmClosedLoop extends Command {
      	  
      	    Robot.arm.armControl();
            SmartDashboard.putNumber("Height", height);
-           SmartDashboard.putNumber("Target Arm Position", RobotConstants.targetPositionRotations);
+           SmartDashboard.putNumber("Target Arm Position", RobotConstants.targetPositionRotations_a);
 
             
     }

@@ -41,7 +41,7 @@ public class AutonomousCmdArmReset extends Command {
 	@Override
 	protected void end() {
 		timer.stop();
-		SmartDashboard.putNumber("Arm Speed", RobotConstants.kMaxSpeed );
+		SmartDashboard.putNumber("Arm Speed", RobotConstants.kMaxSpeed_a );
 		Robot.arm.armSetup();
 	}
 

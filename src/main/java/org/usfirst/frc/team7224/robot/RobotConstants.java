@@ -42,26 +42,26 @@ public class RobotConstants {
 	public static boolean shiftOpenState = false;
 	
 	// Arm 
-	public static final int kSlotIdx = 0;
-	public static final int kallowableCloseLoopError = 300;
-	public static final int kPIDLoopIdx = 0;
-	public static final int kTimeoutMs = 10;
-	public static final double kSlowArm = 0.5;
-	public static final double kNormalArm = 2.5;
-	public static double kMaxSpeed = kNormalArm;
-	public static final double kStopSpeed = 0.0;
-	public static double targetPositionRotations = 0;
-	public static double kArmManualSensitivity = 2000;
-	public static double kArm_Zero_HT = 0;
-	public static double kArm_FieldHT = 5000;
-	public static double kArm_SwitchHT = 130000;
-	public static double kArm_ScaleHT = 280000; 
-	public static double kArmMinHt = 0;
-	public static double kArmMaxHt = 320000;
-	public static double kArmPIDF = 0.0;
-	public static double kArmPIDP = 0.045;
-	public static double kArmPIDI = 0.0001;
-	public static double kArmPIDD = 0.4;
+	public static final int kSlotIdx_a = 0;
+	public static final int kallowableCloseLoopError_a = 300;
+	public static final int kPIDLoopIdx_a = 0;
+	public static final int kTimeoutMs_a = 10;
+	public static final double kSlowArm_a = 0.5;
+	public static final double kNormalArm_a = 2.5;
+	public static double kMaxSpeed_a = kNormalArm_a;
+	public static final double kStopSpeed_a = 0.0;
+	public static double targetPositionRotations_a = 0;
+	public static double kArmManualSensitivity_a = 2000;
+	public static double kArm_Zero_HT_a = 0;
+	public static double kArm_FieldHT_a = 5000;
+	public static double kArm_SwitchHT_a = 130000;
+	public static double kArm_ScaleHT_a = 280000; 
+	public static double kArmMinHt_a = 0;
+	public static double kArmMaxHt_a = 320000;
+	public static double kArmPIDF_a = 0.0;
+	public static double kArmPIDP_a = 0.045;
+	public static double kArmPIDI_a = 0.0001;
+	public static double kArmPIDD_a = 0.4;
 	
 		
 	// Claw 

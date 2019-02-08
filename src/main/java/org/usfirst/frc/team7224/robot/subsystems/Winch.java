@@ -10,22 +10,24 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 public class Winch extends Subsystem {
 
 
-   private final WPI_TalonSRX winchmotor = RobotMap.winchTalonSRX8;
-
+   private final WPI_TalonSRX winchmotor1 = RobotMap.winchTalonSRX9;
+   private final WPI_TalonSRX winchmotor2 = RobotMap.winchTalonSRX10;
 
    public void initDefaultCommand() {
        setDefaultCommand(new WinchAction());
    }
 
    public void setupWinch() {
-	   winchmotor.set(ControlMode.PercentOutput,0);
+       winchmotor1.set(ControlMode.PercentOutput,0);
+       winchmotor2.set(ControlMode.PercentOutput,0);
    }
 
    /**
     * sets the ball motor speed  -1 to +1
     */
    public void setWinchSpeed(double wspeed) {
-	   winchmotor.set(wspeed);
+       winchmotor1.set(wspeed);
+       winchmotor2.set(-wspeed);
 	   }
 }
    

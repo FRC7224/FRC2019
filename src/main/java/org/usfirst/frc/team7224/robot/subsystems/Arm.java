@@ -12,7 +12,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team7224.robot.commands.*;
 
 public class Arm extends Subsystem {
-	private final WPI_TalonSRX arm = RobotMap.armTalonSRX7;
+	private final WPI_TalonSRX arm1 = RobotMap.armTalonSRX7;
+	private final WPI_TalonSRX arm2 = RobotMap.armTalonSRX8;
 	StringBuilder _sb = new StringBuilder();
 	int _loops = 0;
 
@@ -20,38 +21,42 @@ public class Arm extends Subsystem {
 	
 	  public void armSetup() {
 			/* lets grab the 360 degree position of the MagEncoder's absolute position */
-			int absolutePosition = arm.getSelectedSensorPosition(RobotConstants.kTimeoutMs) & 0xFFF; /* mask out the bottom12 bits, we don't care about the wrap arounds */
+			int absolutePosition = arm1.getSelectedSensorPosition(RobotConstants.kTimeoutMs_a) & 0xFFF; /* mask out the bottom12 bits, we don't care about the wrap arounds */
 	        /* use the low level API to set the quad encoder signal */
-	        arm.setSelectedSensorPosition(absolutePosition, RobotConstants.kPIDLoopIdx, RobotConstants.kTimeoutMs);
+	        arm1.setSelectedSensorPosition(absolutePosition, RobotConstants.kPIDLoopIdx_a, RobotConstants.kTimeoutMs_a);
 	        
 	        /* choose the sensor and sensor direction */
-	        arm.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, RobotConstants.kPIDLoopIdx, RobotConstants.kTimeoutMs);
-	        arm.setSensorPhase(true);
+	        arm1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, RobotConstants.kPIDLoopIdx_a, RobotConstants.kTimeoutMs_a);
+	        arm1.setSensorPhase(true);
 	       
 	        
 	        /* set the peak and nominal output */
-	        arm.configNominalOutputForward(RobotConstants.kStopSpeed, RobotConstants.kTimeoutMs);
-	        arm.configNominalOutputReverse(RobotConstants.kStopSpeed, RobotConstants.kTimeoutMs);
-	        arm.configPeakOutputForward(RobotConstants.kMaxSpeed, RobotConstants.kTimeoutMs);
-	        arm.configPeakOutputReverse(-RobotConstants.kMaxSpeed, RobotConstants.kTimeoutMs);
+	        arm1.configNominalOutputForward(RobotConstants.kStopSpeed_a, RobotConstants.kTimeoutMs_a);
+	        arm1.configNominalOutputReverse(RobotConstants.kStopSpeed_a, RobotConstants.kTimeoutMs_a);
+	        arm1.configPeakOutputForward(RobotConstants.kMaxSpeed_a, RobotConstants.kTimeoutMs_a);
+	        arm1.configPeakOutputReverse(-RobotConstants.kMaxSpeed_a, RobotConstants.kTimeoutMs_a);
 	        /* set the allowable closed-loop error,
 	         * Closed-Loop output will be neutral within this range.
-	         * See Table in Section 17.2.1 for native units per rotation. 
+	         * 
 	         * 
 	         */
-	        arm.configAllowableClosedloopError( RobotConstants.kPIDLoopIdx,RobotConstants.kallowableCloseLoopError, RobotConstants.kTimeoutMs); /* always servo */
+	        arm1.configAllowableClosedloopError( RobotConstants.kPIDLoopIdx_a,RobotConstants.kallowableCloseLoopError_a, RobotConstants.kTimeoutMs_a); /* always servo */
 	        /* set closed loop gains in slot0 */
-	        arm.config_kF(RobotConstants.kPIDLoopIdx,RobotConstants.kArmPIDF, RobotConstants.kTimeoutMs);
-	        arm.config_kP(RobotConstants.kPIDLoopIdx, RobotConstants.kArmPIDP, RobotConstants.kTimeoutMs);
-	        arm.config_kI(RobotConstants.kPIDLoopIdx, RobotConstants.kArmPIDI, RobotConstants.kTimeoutMs);
-	        arm.config_kD(RobotConstants.kPIDLoopIdx, RobotConstants.kArmPIDD, RobotConstants.kTimeoutMs);
+	        arm1.config_kF(RobotConstants.kPIDLoopIdx_a,RobotConstants.kArmPIDF_a, RobotConstants.kTimeoutMs_a);
+	        arm1.config_kP(RobotConstants.kPIDLoopIdx_a, RobotConstants.kArmPIDP_a, RobotConstants.kTimeoutMs_a);
+	        arm1.config_kI(RobotConstants.kPIDLoopIdx_a, RobotConstants.kArmPIDI_a, RobotConstants.kTimeoutMs_a);
+			arm1.config_kD(RobotConstants.kPIDLoopIdx_a, RobotConstants.kArmPIDD_a, RobotConstants.kTimeoutMs_a);
+			
+			// setup second motor
+			// arm2.set(ControlMode(CANTalon.ControlMode.Follower));
+			// arm2.reverseOutput(true);
 
 	    }
 	  
 	   public void armPosReset () {
-	       arm.setSelectedSensorPosition(0, 0, 10);
-	       RobotConstants.targetPositionRotations= RobotConstants.kArm_Zero_HT;
-	 //      SmartDashboard.putNumber("Reseting", RobotConstants.targetPositionRotations);
+	       arm1.setSelectedSensorPosition(0, 0, 10);
+	       RobotConstants.targetPositionRotations_a= RobotConstants.kArm_Zero_HT_a;
+	 //      SmartDashboard.putNumber("Reseting", RobotConstants.targetPositionRotations_a);
 	   }
 
 	  @Override
@@ -64,12 +69,12 @@ public class Arm extends Subsystem {
 	    public void periodic() {
 
 	        /* if Talon is in position closed-loop, print some more info */
-	        if( arm.getControlMode() == ControlMode.Position) {
+	        if( arm1.getControlMode() == ControlMode.Position) {
 	        	/* append more signals to print when in speed mode. */
 	        	_sb.append("\terrNative:");
-	        	_sb.append(arm.getClosedLoopError(0));
+	        	_sb.append(arm1.getClosedLoopError(0));
 	        	_sb.append("\ttrg:");
-	        	_sb.append(RobotConstants.targetPositionRotations);
+	        	_sb.append(RobotConstants.targetPositionRotations_a);
 	        	
 	        }
 	        /* print every ten loops, printing too much too fast is generally bad for performance */ 
@@ -81,8 +86,8 @@ public class Arm extends Subsystem {
 
 	    }
 	    public void armControl() {
-	    	arm.set(ControlMode.Position, RobotConstants.targetPositionRotations); 
- 
+			arm1.set(ControlMode.Position, RobotConstants.targetPositionRotations_a); 
+
 	    }
 
 	}

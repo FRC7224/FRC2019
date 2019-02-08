@@ -17,10 +17,10 @@ public class AutonomousCmdArmHeight extends Command {
 
 	@Override
 	protected void initialize() {
-		RobotConstants.targetPositionRotations = position;
-	    SmartDashboard.putNumber("Target Arm Position", RobotConstants.targetPositionRotations);
+		RobotConstants.targetPositionRotations_a = position;
+	    SmartDashboard.putNumber("Target Arm Position", RobotConstants.targetPositionRotations_a);
 		Robot.arm.armControl();
-		SmartDashboard.putNumber("Arm Should be down", RobotConstants.targetPositionRotations);
+		SmartDashboard.putNumber("Arm Should be down", RobotConstants.targetPositionRotations_a);
 	}
 
 	@Override
