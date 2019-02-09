@@ -41,7 +41,75 @@ public class RobotConstants {
 	public static double kshiftRateDown = 800;
 	public static boolean shiftOpenState = false;
 	
-	// Arm 
+	/*	public static final int kSlotIdx = 0;
+	public static final int kallowableCloseLoopError = 300;
+	public static final int kPIDLoopIdx = 0;
+	public static final int kTimeoutMs = 10;
+	public static final double kSlowArm = 0.5;
+	public static final double kNormalArm = 2.5;
+	public static double kMaxSpeed = kNormalArm;
+	public static final double kStopSpeed = 0.0;
+	public static double targetPositionRotations = 0;
+	public static double kArmManualSensitivity = 2000;
+	public static double kArm_Zero_HT = 0;
+	public static double kArm_FieldHT = 5000;
+	public static double kArm_SwitchHT = 130000;
+	public static double kArm_ScaleHT = 280000; 
+	public static double kArmMinHt = 0;
+	public static double kArmMaxHt = 320000;
+	public static double kArmPIDF = 0.0;
+	public static double kArmPIDP = 0.045;
+	public static double kArmPIDI = 0.0001;
+	public static double kArmPIDD = 0.4;
+	*/
+		
+	// Claw 
+	public static boolean clawOpenState = false;
+	public static double kclawcloseTimer_timer = .3;
+
+	// Autonomous 
+	public static int TrajectorySegments;
+	public static boolean isTrajectory = false;
+	public static int kencodermode = 0;
+
+	// Winch 
+	public static double kmaxWinchSpeed = 1.0;
+	public static double kminWinchSpeed = 0.0;
+	public static boolean WinchState = false;
+	// 
+	public static final int kSlotIdx_w = 0;
+	public static final int kallowableCloseLoopError_w = 300;
+	public static final int kPIDLoopIdx_w = 0;
+	public static final int kTimeoutMs_w = 10;
+	public static final double kSlowwinch_w = 0.5;
+	public static final double kNormalwinch_w = 2.5;
+	public static double kMaxSpeed_w = kNormalwinch_w;
+	public static final double kStopSpeed_w = 0.0;
+	public static double targetPositionRotations_w = 0;
+	public static double kwinchManualSensitivity_w = 2000;
+	public static double kwinch_Zero_HT_w = 0;
+	public static double kwinch_FieldHT_w = 5000;
+	public static double kwinch_SwitchHT_w = 130000;
+	public static double kwinch_ScaleHT_w = 280000; 
+	public static double kwinchMinHt_w = 0;
+	public static double kwinchMaxHt_w = 320000;
+	public static double kwinchPIDF_w = 0.0;
+	public static double kwinchPIDP_w = 0.045;
+	public static double kwinchPIDI_w = 0.0001;
+	public static double kwinchPIDD_w = 0.4;
+	public static int kREMOTE_1_w = 0;
+	
+	// Intake 
+	public static double kmaxIntakeSpeed =  0.3;
+	public static double kminIntakeSpeed = -1.0;
+	
+	// Driverstation
+	public static String gameData = "XXX";
+	
+	// Shifter
+	public static double kcloseTimer_timer = .3;
+
+	// arm
 	public static final int kSlotIdx_a = 0;
 	public static final int kallowableCloseLoopError_a = 300;
 	public static final int kPIDLoopIdx_a = 0;
@@ -62,33 +130,6 @@ public class RobotConstants {
 	public static double kArmPIDP_a = 0.045;
 	public static double kArmPIDI_a = 0.0001;
 	public static double kArmPIDD_a = 0.4;
-	public static int kREMOTE_1_a = 0;
-	
-		
-	// Claw 
-	public static boolean clawOpenState = false;
-	public static double kclawcloseTimer_timer = .3;
-
-	// Autonomous 
-	public static int TrajectorySegments;
-	public static boolean isTrajectory = false;
-	public static int kencodermode = 0;
-
-	// Winch 
-	public static double kmaxWinchSpeed = 1.0;
-	public static double kminWinchSpeed = 0.0;
-	public static boolean WinchState = false;
-	
-	// Intake 
-	public static double kmaxIntakeSpeed =  0.3;
-	public static double kminIntakeSpeed = -1.0;
-	
-	// Driverstation
-	public static String gameData = "XXX";
-	
-	// Shifter
-	public static double kcloseTimer_timer = .3;
-
 	
 }
 	

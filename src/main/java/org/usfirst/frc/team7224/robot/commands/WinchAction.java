@@ -26,28 +26,31 @@ public class WinchAction extends Command {
     @Override
     protected void initialize() {
   		
-    	 Robot.winch.setupWinch();
+    	 Robot.winch.winchSetup();
      }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	      if (Robot.oi.joystick1.getRawButton(RobotConstants.kWinchButtonA) && Robot.oi.joystick1.getRawButton(RobotConstants.kWinchButtonB)) {
-    	    	  RobotConstants.WinchState = true;
-    	    	  double winchspeed = Robot.chassis.deadZone(Robot.oi.joystick1.getZ()); // forward
-    	    	  if (winchspeed >= RobotConstants.kmaxWinchSpeed)  // limit max speed
-    	    		  winchspeed = RobotConstants.kmaxWinchSpeed;
-    	    	  if (winchspeed <= RobotConstants.kminWinchSpeed)  // prevent reverse
-    	    		  winchspeed = RobotConstants.kminWinchSpeed;
-    	    	  Robot.winch.setWinchSpeed(winchspeed);
-    //	    	  SmartDashboard.putNumber("winchspeed", winchspeed);
-    	      	  }
-    	    	   else {	  
-    	    	  RobotConstants.WinchState = false;
-    	    	  Robot.winch.setWinchSpeed(RobotConstants.kminWinchSpeed);
-    	    	   }
-    	 //     SmartDashboard.putBoolean("winch state", RobotConstants.WinchState);
- 	     }
+    	    
+
+  // Manual adjustment
+  double height = Robot.chassis.deadZone(Robot.oi.joystick1.getZ()); // height
+  RobotConstants.targetPositionRotations_w =  RobotConstants.targetPositionRotations_w +
+          (height * RobotConstants.kwinchManualSensitivity_w); 
+  
+ 
+
+     // Button not pressed - Normal mode     	
+  if (RobotConstants.targetPositionRotations_w <= RobotConstants.kwinchMinHt_w) 
+     RobotConstants.targetPositionRotations_w = RobotConstants.kwinchMinHt_w;  // Limit to zero height
+  if (RobotConstants.targetPositionRotations_w >= RobotConstants.kwinchMaxHt_w )
+     RobotConstants.targetPositionRotations_w = RobotConstants.kwinchMaxHt_w;  // Limit to max height
+ }
+ 
+  
+
+
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
