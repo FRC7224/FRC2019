@@ -29,17 +29,21 @@ public class Arm extends Subsystem {
 	        /* choose the sensor and sensor direction */
 	        arm1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, RobotConstants.kPIDLoopIdx_a, RobotConstants.kTimeoutMs_a);
 					// setup second motor				
-		    /* Configure the Remote Talon's selected sensor as a remote sensor for the second Talon */
-		    arm2.configRemoteFeedbackFilter(arm1.getDeviceID(),				// Device ID of Source
+			/* Configure the Remote Talon's selected sensor as a remote sensor for the second Talon */
+			arm2.follow(arm1);
+			arm2.setInverted(true);
+
+		   /* arm2.configRemoteFeedbackFilter(arm1.getDeviceID(),				// Device ID of Source
 		    RemoteSensorSource.TalonSRX_SelectedSensor,	// Remote Feedback Source
 		    RobotConstants.kREMOTE_1_a,							// Source number [0, 1]
-		    RobotConstants.kTimeoutMs_a);					// Configuration Timeout
+			RobotConstants.kTimeoutMs_a);					// Configuration Timeout
+			*/
 			
 	       	/* Configure output and sensor direction */
 		    arm1.setInverted(false);
 		    arm1.setSensorPhase(true);
-		    arm2.setInverted(true);
-		    arm2.setSensorPhase(true);
+		    //arm2.setInverted(true);
+		    //arm2.setSensorPhase(true);
 	        
 	        /* set the peak and nominal output */
 	        arm1.configNominalOutputForward(RobotConstants.kStopSpeed_a, RobotConstants.kTimeoutMs_a);
@@ -47,10 +51,10 @@ public class Arm extends Subsystem {
 	        arm1.configPeakOutputForward(RobotConstants.kMaxSpeed_a, RobotConstants.kTimeoutMs_a);
 			arm1.configPeakOutputReverse(-RobotConstants.kMaxSpeed_a, RobotConstants.kTimeoutMs_a);
 			
-			arm2.configNominalOutputForward(RobotConstants.kStopSpeed_a, RobotConstants.kTimeoutMs_a);
-	        arm2.configNominalOutputReverse(RobotConstants.kStopSpeed_a, RobotConstants.kTimeoutMs_a);
-	        arm2.configPeakOutputForward(RobotConstants.kMaxSpeed_a, RobotConstants.kTimeoutMs_a);
-	        arm2.configPeakOutputReverse(-RobotConstants.kMaxSpeed_a, RobotConstants.kTimeoutMs_a);
+			//arm2.configNominalOutputForward(RobotConstants.kStopSpeed_a, RobotConstants.kTimeoutMs_a);
+	        //arm2.configNominalOutputReverse(RobotConstants.kStopSpeed_a, RobotConstants.kTimeoutMs_a);
+	        //arm2.configPeakOutputForward(RobotConstants.kMaxSpeed_a, RobotConstants.kTimeoutMs_a);
+	        //arm2.configPeakOutputReverse(-RobotConstants.kMaxSpeed_a, RobotConstants.kTimeoutMs_a);
 	        /* set the allowable closed-loop error,
 	         * Closed-Loop output will be neutral within this range.
 	         * 
@@ -63,12 +67,12 @@ public class Arm extends Subsystem {
 	        arm1.config_kI(RobotConstants.kPIDLoopIdx_a, RobotConstants.kArmPIDI_a, RobotConstants.kTimeoutMs_a);
 			arm1.config_kD(RobotConstants.kPIDLoopIdx_a, RobotConstants.kArmPIDD_a, RobotConstants.kTimeoutMs_a);
 
-	        arm2.configAllowableClosedloopError( RobotConstants.kPIDLoopIdx_a,RobotConstants.kallowableCloseLoopError_a, RobotConstants.kTimeoutMs_a); /* always servo */
+	        /*arm2.configAllowableClosedloopError( RobotConstants.kPIDLoopIdx_a,RobotConstants.kallowableCloseLoopError_a, RobotConstants.kTimeoutMs_a); /* always servo */
 	        /* set closed loop gains in slot0 */
-	        arm2.config_kF(RobotConstants.kPIDLoopIdx_a,RobotConstants.kArmPIDF_a, RobotConstants.kTimeoutMs_a);
-	        arm2.config_kP(RobotConstants.kPIDLoopIdx_a, RobotConstants.kArmPIDP_a, RobotConstants.kTimeoutMs_a);
-	        arm2.config_kI(RobotConstants.kPIDLoopIdx_a, RobotConstants.kArmPIDI_a, RobotConstants.kTimeoutMs_a);
-			arm2.config_kD(RobotConstants.kPIDLoopIdx_a, RobotConstants.kArmPIDD_a, RobotConstants.kTimeoutMs_a);
+	        //arm2.config_kF(RobotConstants.kPIDLoopIdx_a,RobotConstants.kArmPIDF_a, RobotConstants.kTimeoutMs_a);
+	        //arm2.config_kP(RobotConstants.kPIDLoopIdx_a, RobotConstants.kArmPIDP_a, RobotConstants.kTimeoutMs_a);
+	        //arm2.config_kI(RobotConstants.kPIDLoopIdx_a, RobotConstants.kArmPIDI_a, RobotConstants.kTimeoutMs_a);
+			//arm2.config_kD(RobotConstants.kPIDLoopIdx_a, RobotConstants.kArmPIDD_a, RobotConstants.kTimeoutMs_a);
 
 
             }
@@ -76,7 +80,7 @@ public class Arm extends Subsystem {
 	  
 	   public void armPosReset () {
 		   arm1.setSelectedSensorPosition(0, 0, 10);
-		   arm2.setSelectedSensorPosition(0, 0, 10);
+		   //arm2.setSelectedSensorPosition(0, 0, 10);
 	       RobotConstants.targetPositionRotations_a= RobotConstants.kArm_Zero_HT_a;
 	 //      SmartDashboard.putNumber("Reseting", RobotConstants.targetPositionRotations_a);
 	   }
@@ -109,7 +113,7 @@ public class Arm extends Subsystem {
 	    }
 	    public void armControl() {
 			arm1.set(ControlMode.Position, RobotConstants.targetPositionRotations_a); 
-			arm2.set(ControlMode.Position, RobotConstants.targetPositionRotations_a); 
+			//arm2.set(ControlMode.Position, RobotConstants.targetPositionRotations_a); 
 	    }
 
 	}
