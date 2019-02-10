@@ -38,7 +38,8 @@ public class WinchAction extends Command {
   double height = Robot.chassis.deadZone(Robot.oi.joystick1.getZ()); // height
   RobotConstants.targetPositionRotations_w =  RobotConstants.targetPositionRotations_w +
           (height * RobotConstants.kwinchManualSensitivity_w); 
-  
+     SmartDashboard.putNumber("W Height", height);
+     SmartDashboard.putNumber("W ",   RobotConstants.targetPositionRotations_w);
  
 
      // Button not pressed - Normal mode     	
@@ -46,7 +47,8 @@ public class WinchAction extends Command {
      RobotConstants.targetPositionRotations_w = RobotConstants.kwinchMinHt_w;  // Limit to zero height
   if (RobotConstants.targetPositionRotations_w >= RobotConstants.kwinchMaxHt_w )
      RobotConstants.targetPositionRotations_w = RobotConstants.kwinchMaxHt_w;  // Limit to max height
- }
+     Robot.winch.winchControl();
+    }
  
   
 

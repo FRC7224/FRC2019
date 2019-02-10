@@ -23,12 +23,12 @@
        
          public void winchSetup() {
                /* lets grab the 360 degree position of the MagEncoder's absolute position */
-               int absolutePosition = winchmotor1.getSelectedSensorPosition(RobotConstants.kTimeoutMs_a) & 0xFFF; /* mask out the bottom12 bits, we don't care about the wrap arounds */
+               int absolutePosition = winchmotor1.getSelectedSensorPosition(RobotConstants.kTimeoutMs_w) & 0xFFF; /* mask out the bottom12 bits, we don't care about the wrap arounds */
                /* use the low level API to set the quad encoder signal */
-               winchmotor1.setSelectedSensorPosition(absolutePosition, RobotConstants.kPIDLoopIdx_a, RobotConstants.kTimeoutMs_a);
+               winchmotor1.setSelectedSensorPosition(absolutePosition, RobotConstants.kPIDLoopIdx_w, RobotConstants.kTimeoutMs_w);
                
                /* choose the sensor and sensor direction */
-               winchmotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, RobotConstants.kPIDLoopIdx_a, RobotConstants.kTimeoutMs_a);
+               winchmotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, RobotConstants.kPIDLoopIdx_w, RobotConstants.kTimeoutMs_w);
                        // setup second motor				
                /* Configure the Remote Talon's selected sensor as a remote sensor for the second Talon */
                winchmotor2.follow(winchmotor1);
@@ -43,10 +43,10 @@
                
                
                /* set the peak and nominal output */
-               winchmotor1.configNominalOutputForward(RobotConstants.kStopSpeed_a, RobotConstants.kTimeoutMs_a);
-               winchmotor1.configNominalOutputReverse(RobotConstants.kStopSpeed_a, RobotConstants.kTimeoutMs_a);
-               winchmotor1.configPeakOutputForward(RobotConstants.kMaxSpeed_a, RobotConstants.kTimeoutMs_a);
-               winchmotor1.configPeakOutputReverse(-RobotConstants.kMaxSpeed_a, RobotConstants.kTimeoutMs_a);
+               winchmotor1.configNominalOutputForward(RobotConstants.kStopSpeed_w, RobotConstants.kTimeoutMs_w);
+               winchmotor1.configNominalOutputReverse(RobotConstants.kStopSpeed_w, RobotConstants.kTimeoutMs_w);
+               winchmotor1.configPeakOutputForward(RobotConstants.kMaxSpeed_w, RobotConstants.kTimeoutMs_w);
+               winchmotor1.configPeakOutputReverse(-RobotConstants.kMaxSpeed_w, RobotConstants.kTimeoutMs_w);
                
    
                /* set the allowable closed-loop error,
@@ -54,12 +54,12 @@
                 * 
                 * 
                 */
-               winchmotor1.configAllowableClosedloopError( RobotConstants.kPIDLoopIdx_a,RobotConstants.kallowableCloseLoopError_a, RobotConstants.kTimeoutMs_a); /* always servo */
+               winchmotor1.configAllowableClosedloopError( RobotConstants.kPIDLoopIdx_w,RobotConstants.kallowableCloseLoopError_w, RobotConstants.kTimeoutMs_w); /* always servo */
                /* set closed loop gains in slot0 */
-               winchmotor1.config_kF(RobotConstants.kPIDLoopIdx_a,RobotConstants.kArmPIDF_a, RobotConstants.kTimeoutMs_a);
-               winchmotor1.config_kP(RobotConstants.kPIDLoopIdx_a, RobotConstants.kArmPIDP_a, RobotConstants.kTimeoutMs_a);
-               winchmotor1.config_kI(RobotConstants.kPIDLoopIdx_a, RobotConstants.kArmPIDI_a, RobotConstants.kTimeoutMs_a);
-               winchmotor1.config_kD(RobotConstants.kPIDLoopIdx_a, RobotConstants.kArmPIDD_a, RobotConstants.kTimeoutMs_a);
+               winchmotor1.config_kF(RobotConstants.kPIDLoopIdx_w,RobotConstants.kwinchPIDF_w, RobotConstants.kTimeoutMs_w);
+               winchmotor1.config_kP(RobotConstants.kPIDLoopIdx_w, RobotConstants.kwinchPIDP_w, RobotConstants.kTimeoutMs_w);
+               winchmotor1.config_kI(RobotConstants.kPIDLoopIdx_w, RobotConstants.kwinchPIDI_w, RobotConstants.kTimeoutMs_w);
+               winchmotor1.config_kD(RobotConstants.kPIDLoopIdx_w, RobotConstants.kwinchPIDD_w, RobotConstants.kTimeoutMs_w);
    
         
    
@@ -70,8 +70,8 @@
           public void winchPosReset () {
               winchmotor1.setSelectedSensorPosition(0, 0, 10);
        
-              RobotConstants.targetPositionRotations_a= RobotConstants.kArm_Zero_HT_a;
-        //      SmartDashboard.putNumber("Reseting", RobotConstants.targetPositionRotations_a);
+              RobotConstants.targetPositionRotations_w= RobotConstants.kwinch_Zero_HT_w;
+        //      SmartDashboard.putNumber("Reseting", RobotConstants.targetPositionRotations_w);
           }
    
          @Override
@@ -89,7 +89,7 @@
                    _sb.append("\terrNative:");
                    _sb.append(winchmotor1.getClosedLoopError(0));
                    _sb.append("\ttrg:");
-                   _sb.append(RobotConstants.targetPositionRotations_a);
+                   _sb.append(RobotConstants.targetPositionRotations_w);
                    
                }
                /* print every ten loops, printing too much too fast is generally bad for performance */ 
@@ -101,7 +101,7 @@
    
            }
            public void winchControl() {
-               winchmotor1.set(ControlMode.Position, RobotConstants.targetPositionRotations_a); 
+               winchmotor1.set(ControlMode.Position, RobotConstants.targetPositionRotations_w); 
        
            }
        }
