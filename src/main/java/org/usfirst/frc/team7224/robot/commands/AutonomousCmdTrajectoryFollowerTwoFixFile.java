@@ -53,13 +53,13 @@ public class AutonomousCmdTrajectoryFollowerTwoFixFile extends Command {
            // FRC 2018 First Power up game decision
            // Determine Switch, Scale or far Switch
            // *********************************************** 
-            RobotConstants.kMaxSpeed_a = RobotConstants.kSlowArm_a; // slow down arm 
+          //  RobotConstants.kMaxSpeed_a = RobotConstants.kSlowArm_a; // slow down arm 
             Robot.arm.armSetup();
-              if(RobotConstants.gameData.length() > 0) {
+          //    if(RobotConstants.gameData.length() > 0) {
                   switch (Position) { 
                   case 0:  // Drive straight
           	    	       fileString = "/home/lvuser/driveStraight.traj"; 
-           	    	       RobotConstants.targetPositionRotations_a = RobotConstants.kArm_FieldHT_a; 
+           	    	      // RobotConstants.targetPositionRotations_a = RobotConstants.kArm_FieldHT_a; 
            	    	       maxtimeout = 10;
                   case 1:  // Position left  
                 	       if (RobotConstants.gameData.charAt(1) == 'L') { // Go for scale
@@ -108,23 +108,24 @@ public class AutonomousCmdTrajectoryFollowerTwoFixFile extends Command {
                            break;         
                   default: // Default drive straight 
                            fileString = "/home/lvuser/driveStraight.traj"; 
-  	    	               RobotConstants.targetPositionRotations_a = RobotConstants.kArm_FieldHT_a; 
+  	    	             //  RobotConstants.targetPositionRotations_a = RobotConstants.kArm_FieldHT_a; 
   	      	               maxtimeout = 10;
                           break;         
                   } // end of switch
             //  Robot.arm.armControl();
               SmartDashboard.putNumber("Target Arm Position", RobotConstants.targetPositionRotations_a);
-              } else {
-            	fileString = "/home/lvuser/driveStraight.traj"; 
-	            RobotConstants.targetPositionRotations_a = RobotConstants.kArm_SwitchHT_a; 
-                } // End of iff
+            //  } else {
+                
+            //	fileString = "/home/lvuser/driveStraight.traj"; 
+	          //  RobotConstants.targetPositionRotations_a = RobotConstants.kArm_SwitchHT_a; 
+            //    } // End of iff
             
                   
                 SmartDashboard.putString("GameData", RobotConstants.gameData);            
                 SmartDashboard.putString("FileName", fileString);
         
                   // Raise arm to height set in switch 
-          	      Robot.arm.armControl();
+          	  //    Robot.arm.armControl();
                   File myFile = new File (fileString);
                   Trajectory trajectory = Pathfinder.readFromFile(myFile);
                    
@@ -214,7 +215,7 @@ public class AutonomousCmdTrajectoryFollowerTwoFixFile extends Command {
                   right.reset();
                   Robot.chassis.resetEncoders();
                   Robot.chassis.displayChasisData();
-                  RobotConstants.kMaxSpeed_a = RobotConstants.kNormalArm_a; // Normal arm 
+                //  RobotConstants.kMaxSpeed_a = RobotConstants.kNormalArm_a; // Normal arm 
               
         }
         @Override
@@ -240,7 +241,7 @@ public class AutonomousCmdTrajectoryFollowerTwoFixFile extends Command {
             RobotConstants.isTrajectory = false;
             Robot.chassis.resetEncoders();
             Robot.chassis.brakemode(false);
-            RobotConstants.kMaxSpeed_a = RobotConstants.kNormalArm_a; // Normal arm 
+           // RobotConstants.kMaxSpeed_a = RobotConstants.kNormalArm_a; // Normal arm 
         }
 
         @Override

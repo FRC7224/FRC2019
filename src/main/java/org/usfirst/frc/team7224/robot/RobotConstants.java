@@ -22,8 +22,8 @@ public class RobotConstants {
 	public static int kintakeinbutton = 3;
     public static int kintakeoutbutton= 4;
 //	public static int kzeroResetbutton = 4;
-	public static int kclawgraboutbutton = 6;
-	public static int kclawgrabonbutton = 5; 
+	public static int kclawgraboutbutton = 9;
+	public static int kclawgrabonbutton = 6; 
 //	public static int kWinchButtonA = 9;
 	public static int kArmOverideButton = 8;
 //	public static int kWinchButtonB = 10;
@@ -81,8 +81,8 @@ public class RobotConstants {
 	public static int kREMOTE_1_w = 0;
 	
 	// Intake 
-	public static double kmaxIntakeSpeed =  0.2;
-	public static double kminIntakeSpeed = -0.2;
+	public static double kmaxIntakeSpeed =  0.5;
+	public static double kminIntakeSpeed = -0.5;
 	
 	// Driverstation
 	public static String gameData = "XXX";

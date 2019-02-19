@@ -56,6 +56,7 @@ public class ClawAction extends Command {
 	  // ****************************** Claw on  *******************************************		 
 	  if (Robot.oi.joystick1.getRawButton(RobotConstants.kclawgrabonbutton)) {
 	  Robot.claw.Claw_on();
+	  	SmartDashboard.putNumber("claw on", RobotConstants.kclawgrabonbutton);
       } else { //  toggle off
 	  Robot.claw.Claw_off();
       }

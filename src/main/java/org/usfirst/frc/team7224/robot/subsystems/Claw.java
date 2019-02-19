@@ -26,6 +26,17 @@ public class Claw extends Subsystem {
       public void initDefaultCommand() {
        setDefaultCommand(new ClawAction());
     }
+     // *******************  Claw  on off ********
+     public void Claw_on() {
+        //
+        // pan down
+        Claw_on_off.set(true);
+    }
+     public void Claw_off() {
+        //
+        // closes claw
+        Claw_on_off.set(false);
+    }
 
         public void Pan_down() {
         //
@@ -49,18 +60,7 @@ public class Claw extends Subsystem {
             // closes claw
             Claw_out_in.set(false);
         }
-        // *******************  Claw  on off ********
-        public void Claw_on() {
-            //
-            // pan down
-            Claw_on_off.set(true);
-        }
-         public void Claw_off() {
-            //
-            // closes claw
-            Claw_out_in.set(false);
-        }
-
+   
 
 
 

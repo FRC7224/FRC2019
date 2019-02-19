@@ -36,7 +36,7 @@ public class IntakeAction extends Command {
         if (Robot.oi.joystick1.getRawButton(RobotConstants.kintakeinbutton)) {
         intakespeed = RobotConstants.kmaxIntakeSpeed;
         } else { //  toggle off
-            if (Robot.oi.joystick1.getRawButton(RobotConstants.kintakeinbutton))
+            if (Robot.oi.joystick1.getRawButton(RobotConstants.kintakeoutbutton))
             intakespeed = RobotConstants.kminIntakeSpeed;
                 }
      Robot.intake.setIntakeMotor(intakespeed); 	
