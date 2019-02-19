@@ -64,12 +64,12 @@ public class ArmClosedLoop extends Command {
      	    }
      	    */
      	    
-     	   if (Robot.oi.joystick1.getRawButton(RobotConstants.kArmOverideButton) && 
-     			  Robot.oi.joystick1.getRawButton(RobotConstants.kzeroResetbutton)) {
-     		   // This is bad... something went wrong ...  emergency reset
+    // 	   if (Robot.oi.joystick1.getRawButton(RobotConstants.kArmOverideButton) && 
+    // 			  Robot.oi.joystick1.getRawButton(RobotConstants.kzeroResetbutton)) {
+     //		   // This is bad... something went wrong ...  emergency reset
      //		  SmartDashboard.putNumber("RESSEEEEEEEE", RobotConstants.targetPositionRotations);
-     		  Robot.arm.armPosReset();
-     	   }
+     //		  Robot.arm.armPosReset();
+    // 	   }
      	    
      	  
      	    Robot.arm.armControl();

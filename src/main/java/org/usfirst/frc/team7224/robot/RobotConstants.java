@@ -19,14 +19,14 @@ public class RobotConstants {
 	public static double kdeadzone = 0.1; // updated by MG
 	public static int kclawbutton = 1;
 	public static int kshiftbutton = 2;
-	public static int kintakein = 3;
-	//public static int kintakeout= 4;
-	public static int kzeroResetbutton = 4;
-	public static int kclaw_grap_out = 6;
-	public static int kclaw_grap_on = 5; 
-	public static int kWinchButtonA = 9;
+	public static int kintakeinbutton = 3;
+    public static int kintakeoutbutton= 4;
+//	public static int kzeroResetbutton = 4;
+	public static int kclawgraboutbutton = 6;
+	public static int kclawgrabonbutton = 5; 
+//	public static int kWinchButtonA = 9;
 	public static int kArmOverideButton = 8;
-	public static int kWinchButtonB = 10;
+//	public static int kWinchButtonB = 10;
 	
 	// Simple Drive
 //	public static double simpleDriveTime = 0.0;
@@ -81,8 +81,8 @@ public class RobotConstants {
 	public static int kREMOTE_1_w = 0;
 	
 	// Intake 
-	public static double kmaxIntakeSpeed =  0.3;
-	public static double kminIntakeSpeed = -1.0;
+	public static double kmaxIntakeSpeed =  0.2;
+	public static double kminIntakeSpeed = -0.2;
 	
 	// Driverstation
 	public static String gameData = "XXX";

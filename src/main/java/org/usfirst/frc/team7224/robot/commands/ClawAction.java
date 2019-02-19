@@ -38,27 +38,27 @@ public class ClawAction extends Command {
 		
 	    // ****************************** Pan  *******************************************
 		
-	if (Robot.oi.joystick1.getRawButton(RobotConstants.kclawbutton)) 
+	if (Robot.oi.joystick1.getRawButton(RobotConstants.kclawbutton)) {
 				Robot.claw.Pan_down();
-			 else { //  toggle off
+	         } else { //  toggle off
 				Robot.claw.Pan_up();
 			 }	
 			
 					 
 
 	  // ****************************** Claw out  *******************************************		 
-	if (Robot.oi.joystick1.getRawButton(RobotConstants.kclaw_grap_out)) 
+	if (Robot.oi.joystick1.getRawButton(RobotConstants.kclawgraboutbutton)) {
 			 Robot.claw.Claw_in();
-		  else { //  toggle off
+	      } else { //  toggle off
 			 Robot.claw.Claw_out();
 		  }
 		
-	  // ****************************** Claw out  *******************************************		 
-	  if (Robot.oi.joystick1.getRawButton(RobotConstants.kclaw_grap_on)) 
+	  // ****************************** Claw on  *******************************************		 
+	  if (Robot.oi.joystick1.getRawButton(RobotConstants.kclawgrabonbutton)) {
 	  Robot.claw.Claw_on();
-   else { //  toggle off
+      } else { //  toggle off
 	  Robot.claw.Claw_off();
-   }
+      }
 		  
 		
 		
