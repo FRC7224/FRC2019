@@ -16,7 +16,7 @@ public class Claw extends Subsystem {
 
 
     private final Solenoid Pan_down_up = RobotMap.pneumaticsSolenoid1;
-    private final Solenoid Claw_out_in = RobotMap.pneumaticsSolenoid2_claww_out;
+    private final Solenoid Claw_out_in = RobotMap.pneumaticsSolenoid2_claw_out;
     private final Solenoid Claw_on_off = RobotMap.pneumaticsSolenoid3_claw_on;
 
     
