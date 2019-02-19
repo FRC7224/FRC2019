@@ -15,22 +15,56 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Claw extends Subsystem {
 
 
-    private final Solenoid OpenCloseClaw = RobotMap.pneumaticsSolenoid1;
+    private final Solenoid Pan_down_up = RobotMap.pneumaticsSolenoid1;
+    private final Solenoid Claw_out_in = RobotMap.pneumaticsSolenoid2_claww_out;
+    private final Solenoid Claw_on_off = RobotMap.pneumaticsSolenoid3_claw_on;
+
+    
+
 
 
       public void initDefaultCommand() {
        setDefaultCommand(new ClawAction());
     }
 
-        public void openClaw() {
+        public void Pan_down() {
         //
-        // opens claw
-        	OpenCloseClaw.set(true);
-    }
+        // pan down
+        	Pan_down_up.set(true);
+         }
+        public void Pan_up() {
+        //
+        // closes up
+         Pan_down_up.set(false);
+        }
 
-    public void closeClaw() {
-        //
-        // closes claw
-    	   OpenCloseClaw.set(false);
-    }
+        // *******************  Claw  in out ********
+         public void Claw_in() {
+            //
+            // pan down
+         Claw_out_in.set(true);
+        }
+         public void Claw_out() {
+            //
+            // closes claw
+            Claw_out_in.set(false);
+        }
+        // *******************  Claw  on off ********
+        public void Claw_on() {
+            //
+            // pan down
+            Claw_on_off.set(true);
+        }
+         public void Claw_off() {
+            //
+            // closes claw
+            Claw_out_in.set(false);
+        }
+
+
+
+
+
+
+
 }

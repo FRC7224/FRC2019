@@ -85,7 +85,8 @@ public class Robot extends TimedRobot {
 		 
 	      server = CameraServer.getInstance();
 	  server.startAutomaticCapture(0);
-		RobotConstants.targetPositionRotations_a = 0; // reset on startup crate height
+		RobotConstants.targetPositionRotations_a = 0; // reset on startup  height
+		RobotConstants.targetPositionRotations_w = 0; // reset on startup  height
 //		  server.startAutomaticCapture(1);
 		  
      	 

@@ -53,7 +53,7 @@ public class ArmClosedLoop extends Command {
      	   
      	   
      	   
-     	   
+     	   /*
      	    // Preset Heights
      	    if (Robot.oi.joystick1.getRawButtonPressed(RobotConstants.karm_FieldHTbutton )) {
      		  RobotConstants.targetPositionRotations_a = RobotConstants.kArm_FieldHT_a;
@@ -62,7 +62,7 @@ public class ArmClosedLoop extends Command {
      	    }else if (Robot.oi.joystick1.getRawButtonPressed(RobotConstants.karm_ScaleHTbutton)) {
      		  RobotConstants.targetPositionRotations_a = RobotConstants.kArm_ScaleHT_a;
      	    }
-     	    
+     	    */
      	    
      	   if (Robot.oi.joystick1.getRawButton(RobotConstants.kArmOverideButton) && 
      			  Robot.oi.joystick1.getRawButton(RobotConstants.kzeroResetbutton)) {

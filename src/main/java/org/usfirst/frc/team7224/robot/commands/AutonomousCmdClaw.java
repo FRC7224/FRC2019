@@ -16,9 +16,9 @@ public class AutonomousCmdClaw extends Command {
 	@Override
 	protected void initialize() {
 		if (State) {
-			Robot.claw.openClaw(); 
+		//	Robot.claw.openClaw(); 
 		} else {
-			Robot.claw.closeClaw();
+		//	Robot.claw.closeClaw();
 		}
 	}
 
