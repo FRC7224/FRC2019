@@ -87,7 +87,7 @@ public class Robot extends TimedRobot {
 	  server.startAutomaticCapture(0);
 		RobotConstants.targetPositionRotations_a = 0; // reset on startup  height
 		RobotConstants.targetPositionRotations_w = 0; // reset on startup  height
-//		  server.startAutomaticCapture(1);
+		  server.startAutomaticCapture(1);
 		  
      	 
 	}	

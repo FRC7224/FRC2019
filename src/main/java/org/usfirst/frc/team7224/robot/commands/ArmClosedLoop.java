@@ -34,7 +34,12 @@ public class ArmClosedLoop extends Command {
     	    double height = Robot.chassis.deadZone(Robot.oi.joystick1.getRawAxis(4)); // height
      	    RobotConstants.targetPositionRotations_a =  RobotConstants.targetPositionRotations_a +
      	    		(height * RobotConstants.kArmManualSensitivity_a); 
-     	    
+             
+      if (Robot.oi.joystick1.getRawButton(RobotConstants.kpreButton)) {
+                        /// Preset
+        RobotConstants.targetPositionRotations_a = RobotConstants.kArmpreHt_a;
+                          // Redefine top
+                    }
      	    
      	   if (Robot.oi.joystick1.getRawButton(RobotConstants.kArmOverideButton)) {
      		   /// This is bad only use in an emergancy 

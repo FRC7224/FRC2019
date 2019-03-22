@@ -25,6 +25,7 @@ public class RobotConstants {
 	public static int kclawgraboutbutton = 9;
 	public static int kclawgrabonbutton = 6; 
 //	public static int kWinchButtonA = 9;
+    public static int kpreButton = 7;
 	public static int kArmOverideButton = 8;
 //	public static int kWinchButtonB = 10;
 	
@@ -73,6 +74,7 @@ public class RobotConstants {
 	public static double kwinch_SwitchHT_w = 130000;
 	public static double kwinch_ScaleHT_w = 280000; 
 	public static double kwinchMinHt_w = 0;
+	public static double kwinchpreHt_w = 320000;
 	public static double kwinchMaxHt_w = 320000;
 	public static double kwinchPIDF_w = 0.0;
 	public static double kwinchPIDP_w = 0.045;
@@ -105,8 +107,9 @@ public class RobotConstants {
 	public static double kArm_FieldHT_a = 5000;
 	public static double kArm_SwitchHT_a = 130000;
 	public static double kArm_ScaleHT_a = 280000; 
-	public static double kArmMinHt_a = -320000;
+	public static double kArmMinHt_a = -430000;
 	public static double kArmMaxHt_a = 500000;
+	public static double kArmpreHt_a = -219829;
 	public static double kArmPIDF_a = 0.0;
 	public static double kArmPIDP_a = 0.045;
 	public static double kArmPIDI_a = 0.0001;
